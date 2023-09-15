@@ -1,0 +1,64 @@
+<div class="urlbox">
+  <div class="d-flex justify-content-center formurl">  
+    <%= text_field_tag :url, url_with_host(@show_generated_url.unique_key) %>
+    <%= button_tag "Copy Url" %>
+  </div>
+  <div>
+    <p class="p-3">
+      ShortURL is a free tool to shorten URLs and generate short links URL shortener allows to create a shortened link making it easy to share
+    </p>
+  </div>
+</div>
+<!-- index of urls -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Generated&nbspurl</th>
+      <th scope="col">Uses</th>
+      <th scope="col">Url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @all_urls.each do |url| %>
+      <tr>
+        <td><%= url.id %></td>
+        <td><%= "http://localhost:3000/#{url.unique_key}" %></td>
+        <td><%= url.use_count %></td>
+        <td><%= url.url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- history -->
+<div>
+  <p class="mt-3">History</p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Generated&nbspurl</th>
+      <th scope="col">Uses</th>
+      <th scope="col">Ip</th>
+      <th scope="col">City</th>
+      <th scope="col">Country</th>
+      <th scope="col">Url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @all_urls.each do |url| %>
+      <% url.url_histories.each do |history| %>
+        <tr>
+          <td><%= url.id %></td>
+          <td><%= "http://localhost:3000/#{url.unique_key}" %></td>
+          <td><%= url.use_count %></td>
+          <td><%= history.ip %></td>
+          <td><%= history.city %></td>
+          <td><%= history.country %></td>
+          <td><%= url.url %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

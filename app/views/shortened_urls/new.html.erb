@@ -1,0 +1,17 @@
+<%= form_for(@shortener, url: shortened_urls_path) do |f| %>
+<div class="d-flex flex-column align-items-center">
+  <h1>Url Shortener</h1>
+  <div class="urlbox">
+      <h1>Paste the URL to be shortened</h1>
+    <div class="d-flex justify-content-center formurl">  
+      <%= f.text_field :url, class: 'w-50' %>
+      <%= f.submit "generate url" %>
+    </div>
+    <div>
+      <p class="p-3">
+        ShortURL is a free tool to shorten URLs and generate short links URL shortener allows to create a shortened link making it easy to share
+      </p>
+    </div>
+  </div>
+</div>
+<% end %>
